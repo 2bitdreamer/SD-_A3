@@ -57,21 +57,7 @@ TheGame::TheGame(void)
 	
 	m_up = Vec3(0.f, 0.f, 1.f);
 	m_gameClock = new Clock(Clock::s_masterClock);
-
-	m_jobManager->Initialize(2);
-	m_testMemory->TestAllocator();
-
-	//RegisterCommand("generateFiles", OnGenerateFiles);
-	//GenerateFiles(10, 100, "Data/RandomFiles");
-
-	//m_jobManager->EnqueueJob(new LoadFileJob("Data/testRead.txt", m_testData, m_testSize), TestError, nullptr);
-	
-
-	//std::vector<std::pair<RGBA, int>> testingColors;
-	//testingColors.push_back(std::make_pair(RGBA(0, 255, 0, 255), 2));
-	//testingColors.push_back(std::make_pair(RGBA(255, 255, 0, 255), 1));
-	//testingColors.push_back(std::make_pair(RGBA(255, 0, 0, 255), 1));
-	//m_devConsole->ConsolePrint("Testing different colors Debug!", testingColors);
+	NetSystem::GetInstance();
 
 }
 
@@ -368,13 +354,13 @@ void TheGame::KeyPressEvent(unsigned char theKey) {
 	m_keyStates[theKey].m_isPressed = true;
 	m_keyStates[theKey].m_hasKeyJustBeenReleased = false;
 
-	if (theKey == VK_OEM_3) {
+	if (theKey == 96) {
 		m_devConsole->ToggleVisibility();
 	}
 
 	if (m_devConsole->m_enabled) {
 
-		if ((theKey >= 'A' && theKey <= 'z') || (theKey >= '0' && theKey <= '9'))
+		if (isalnum(theKey) || ispunct(theKey) || (theKey == 190))
 			m_devConsole->AppendChar(theKey);
 
 		if (theKey == VK_RETURN) {
@@ -473,6 +459,6 @@ void TheGame::KeyReleaseEvent(unsigned char theKey) {
 
 	}
 	if (theKey == '4') {
-		RECOVERABLE_ERROR("You have a headache.");
+		//RECOVERABLE_ERROR("You have a headache.");
 	}
 }

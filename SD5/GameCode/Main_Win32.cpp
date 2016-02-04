@@ -56,11 +56,11 @@ LRESULT CALLBACK WindowsMessageHandlingProcedure(HWND windowHandle, UINT wmMessa
 		return 0;
 
 	case WM_CHAR:
+		TheGame::GetInstance().KeyPressEvent(asKey);
 		break;
 
 	case WM_KEYDOWN:
-
-		TheGame::GetInstance().KeyPressEvent(asKey);
+		
 		break;
 
 	case WM_KEYUP:
