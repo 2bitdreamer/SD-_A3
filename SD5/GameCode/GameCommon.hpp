@@ -8,7 +8,6 @@ struct BlockInfo;
 #include <vector>
 #include "Engine/Utilities/EngineCommon.hpp"
 #include <stdlib.h>
-#include <winsock2.h>
 
 const unsigned char SKY_LIGHT = 4;
 const unsigned char FIRE_LIGHT = 9;
