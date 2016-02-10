@@ -45,7 +45,7 @@ TheGame::TheGame(void)
 	m_testSize(0),
 	m_testData(nullptr),
 	m_testMemory(new TestMemory()),
-	m_devConsole(new DevConsole())
+	m_devConsole(DevConsole::GetInstance())
 {
 	Clock::InitializeMasterClock();
 
@@ -115,6 +115,8 @@ void TheGame::Update(double deltaTimeSeconds) {
 
 	UpdateCameraFromMouseAndKeyboard( m_camera, deltaTimeSeconds );
 	Clock::s_masterClock->AdvanceTime((float)deltaTimeSeconds);
+	NetSystem* networkSystem = NetSystem::GetInstance();
+	networkSystem->Tick();
 
 }
 

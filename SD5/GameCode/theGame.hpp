@@ -71,7 +71,6 @@ public:
 	XMLFontRenderer* m_fontRenderer;
 	bool m_showProfilingStats;
 
-
 	Clock* m_gameClock;
 	JobManager* m_jobManager;
 
